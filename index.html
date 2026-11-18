@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111827" />
+    <title>UNO Night</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="game-shell" aria-label="UNO 遊戲">
+      <header class="topbar">
+        <button class="icon-button" id="helpButton" type="button" aria-label="遊戲說明">?</button>
+        <div class="brand" aria-label="UNO Night">
+          <span>UNO</span>
+          <small>NIGHT</small>
+        </div>
+        <button class="icon-button" id="restartButton" type="button" aria-label="重新開始">
+          ↻
+        </button>
+      </header>
+
+      <section class="table" id="table">
+        <div class="status-pill" id="statusPill">輪到你</div>
+
+        <div class="opponent opponent-top" id="opponent2"></div>
+        <div class="opponent opponent-left" id="opponent1"></div>
+        <div class="opponent opponent-right" id="opponent3"></div>
+
+        <div class="center-pile">
+          <button class="draw-pile" id="drawPile" type="button" aria-label="抽牌">
+            <span class="draw-back">
+              <b>UNO</b>
+            </span>
+            <small>抽牌堆</small>
+          </button>
+
+          <div class="discard-wrap">
+            <div class="discard-pile" id="discardPile"></div>
+            <small>棄牌堆</small>
+          </div>
+        </div>
+
+        <div class="direction" id="direction" aria-label="遊戲方向">↻</div>
+      </section>
+
+      <section class="player-area" aria-label="你的手牌">
+        <button class="uno-button" id="unoButton" type="button">UNO!</button>
+        <div class="hand" id="playerHand"></div>
+        <div class="turn-label" id="turnLabel">輪到你出牌</div>
+      </section>
+    </main>
+
+    <dialog id="colorDialog">
+      <form method="dialog" class="color-dialog">
+        <h2>選擇一個顏色</h2>
+        <div class="color-options">
+          <button type="button" class="color-choice red" data-color="red" aria-label="紅色"></button>
+          <button type="button" class="color-choice yellow" data-color="yellow" aria-label="黃色"></button>
+          <button type="button" class="color-choice green" data-color="green" aria-label="綠色"></button>
+          <button type="button" class="color-choice blue" data-color="blue" aria-label="藍色"></button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="helpDialog">
+      <div class="help-card">
+        <button class="dialog-close" id="helpClose" type="button" aria-label="關閉">×</button>
+        <h2>遊戲規則</h2>
+        <ul>
+          <li>只能出與棄牌堆相同顏色、數字或圖案的牌。</li>
+          <li>抽牌堆：抽牌後若能出可繼續選牌；否則結束回合。</li>
+          <li><b>+2</b>：下一位玩家抽兩張並跳過；<b>跳過</b>：跳過下一位。</li>
+          <li><b>反轉</b>：反轉順序；<b>萬用</b>：可選擇任何顏色。</li>
+          <li><b>萬用 +4</b>：選顏色，下一位抽四張並跳過。</li>
+          <li>剩下一張牌時，記得按 <b>UNO!</b>。</li>
+        </ul>
+        <button class="primary-button" id="helpDone" type="button">開始遊戲</button>
+      </div>
+    </dialog>
+
+    <dialog id="winnerDialog">
+      <div class="winner-card">
+        <div class="confetti" aria-hidden="true">● ◆ ● ◆ ●</div>
+        <h2 id="winnerTitle">你贏了！</h2>
+        <p id="winnerText">漂亮的一局。</p>
+        <button class="primary-button" id="playAgainButton" type="button">再玩一局</button>
+      </div>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
